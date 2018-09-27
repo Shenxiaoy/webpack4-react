@@ -1,0 +1,17 @@
+# Created by IDE
+.idea/
+*.iml
+.DS_Store
+.vscode
+*.sw*
+.project
+votecmd.dat
+# Node
+logs
+*.log
+npm-debug.log*
+node_modules
+.npm
+.history/
+
+# Product

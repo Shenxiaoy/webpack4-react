@@ -1,0 +1,11 @@
+
+
+
+### primjs
+> 代码高亮、美化库
+```
+npm i primis --save
+npm i babel-plugin-prismjs --save-dev
+```
+
+###
