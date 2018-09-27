@@ -4,6 +4,7 @@ const path = require('path')
 const baseWebpackConfig = require('./webpack.base.conf')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const htmlGenerator = require('./htmlGenerator')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const config = require('../config')
 
 Object.keys(baseWebpackConfig.entry).forEach(function(name) {
@@ -17,7 +18,8 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    // new FriendlyErrorsPlugin(),
+
+
   ].concat(htmlGenerator(config.views))
 })
 

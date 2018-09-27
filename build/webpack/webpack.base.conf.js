@@ -13,6 +13,12 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json'],
     alias: {},
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    }),
+  ],
 
   module: {
     rules: [
@@ -25,7 +31,7 @@ module.exports = {
         test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
-          "style-loader",
+          // "style-loader",
           "css-loader",
         ]
       },
@@ -33,7 +39,7 @@ module.exports = {
         test: /\.less$/,
         use: [
           MiniCssExtractPlugin.loader,
-          "style-loader",
+          // "style-loader",
           "css-loader",
           "less-loader"
         ],
