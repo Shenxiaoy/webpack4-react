@@ -21,7 +21,7 @@ compiler.run(function(err, stats) {
       chunks       : false,
       chunkModules : false
     }) + '\n\n')
-    console.log('Webpack compiler finished successfully！ See ./dist.')
+    console.log('Webpack compiler finished successfully！ See ./prod.')
   }
 
 })

@@ -40,3 +40,18 @@ module.exports = {
    module.hot.accept()
  }
 ```
+
+## 图片打包问题
+在js中img src直接引入图片路径，并没有被打包，因为没有被依赖识别
+
+解决办法：引入图片地址，作为变量引入到src 中
+```
+import imgSrc from './img/1.png'
+<img src={imgSrc} />
+```
+
+在webpack4 最新打包配置中暂无发现解决这个问题的办法。
+
+
+
+

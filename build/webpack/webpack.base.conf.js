@@ -1,6 +1,7 @@
 const config = require('../config')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const entries = require('./getEntrys')(config.views)
+const isDev = process.env.NODE_ENV === 'development'
 
 module.exports = {
   entry: entries,
@@ -30,28 +31,26 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          MiniCssExtractPlugin.loader,
-          // "style-loader",
+          !isDev ? MiniCssExtractPlugin.loader : "style-loader",
           "css-loader",
         ]
       },
       {
         test: /\.less$/,
         use: [
-          MiniCssExtractPlugin.loader,
-          // "style-loader",
+          !isDev ? MiniCssExtractPlugin.loader : "style-loader",
           "css-loader",
           "less-loader"
         ],
         exclude: /node_modules/,
       },
       {
-        test: /\.(png|jpg|svg|gif|jpeg)/,
+        test: /\.(png|jpg|svg|gif|jpeg)$/,
         loader: 'url-loader',
         options: {
           outputPath: 'images/',
           limit: 5 * 1024,
-          name: 'images/[name].[hash:7].[ext]'
+          name: '[name].[hash:7].[ext]'
         },
         exclude: /node_modules/,
       },
@@ -70,7 +69,7 @@ module.exports = {
           limit: 5000,
           name: 'audio/[name].[hash:7].[ext]'
         }
-      }
+      },
 
     ]
   }

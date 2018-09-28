@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node build/server.js",
-    "build": "node build/build.js",
+    "dev": "cross-env NODE_ENV=development node build/server.js",
+    "build": "cross-env NODE_ENV=production node build/build.js",
     "start": "webpack-dev-server --open"
   },
   "keywords": [],
@@ -22,6 +22,7 @@
     "babel-loader": "8.0.2",
     "clean-webpack-plugin": "^0.1.19",
     "connect-history-api-fallback": "^1.5.0",
+    "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "eslint": "^5.6.0",
     "eslint-config-airbnb": "^17.1.0",
