@@ -2,6 +2,9 @@ import React from 'react'
 import { render } from 'react-dom'
 import './styles.less'
 import img1 from './img/1.png'
+import {Input} from 'antd'
+// import Test from '../component/test'
+import _ from 'lodash'
 
 class App extends React.Component {
 
@@ -14,6 +17,7 @@ class App extends React.Component {
       <span style={{border: '2px solid #ccc'}}>c3ccc</span>
       <p className="img-box">
         <img src={img1} alt=""/>
+        <Input/>
       </p>
     </div>
   }

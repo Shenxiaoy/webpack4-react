@@ -11,6 +11,7 @@ module.exports = merge(baseWebpackConfig, {
   output: {
     path: config.rootPath + '/prod',
     filename: '[name][hash:7].js',
+    // chunkFilename: '[name].js',
     publicPath: './'
   },
   mode: 'production',

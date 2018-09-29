@@ -17,7 +17,7 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: "[name].css",
-      chunkFilename: "[id].css"
+      // chunkFilename: "[id].css"
     }),
   ],
 
@@ -72,5 +72,34 @@ module.exports = {
       },
 
     ]
+  },
+
+  // 代码分离，公共js打包
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        common: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'common',
+          chunks: 'initial',
+          priority: 2,
+          minChunks: 2,
+        },
+        // vendor: {
+        //   name: 'vendor',
+        //   chunks: 'initial',
+        //   priority: 10,
+        //   test: /[\\/]node_modules[\\/][(react)|(antd)|(lodash)]/
+        // },
+        // 主要用于抽取出一个css文件
+        // styles: {
+        //   name: 'styles',
+        //   test: /\.less$/,
+        //   chunks: 'all',
+        //   enforce: true,
+        //   priority: 20,
+        // }
+      }
+    }
   }
 }
