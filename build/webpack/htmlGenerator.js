@@ -5,6 +5,8 @@ const htmlGenerator = function(views) {
 
   const r = []
   for(const key in views) {
+    const staticUrl = (process.env.NODE_ENV  === 'production' ? './assets/' : '/assets/')
+
     const conf = {
       filename: key + '.html',
       template: path.join(__dirname, './template.html'),
@@ -22,7 +24,7 @@ const htmlGenerator = function(views) {
       },
       params: {
         id: key,
-        staticUrl: '/',
+        staticUrl: staticUrl,
         title: views[key]['title']
       }
     }

@@ -1,8 +1,11 @@
 const webpack = require('webpack')
 const webpackDevMiddle = require('webpack-dev-middleware')
 const webpackHotMiddle = require('webpack-hot-middleware')
+const path = require('path')
+const config = require('./config')
 const express = require('express')
 const devWebpackConfig = require('./webpack/webpack.dev.conf.js')
+const utils = require('./utils')
 
 const compiler = webpack(devWebpackConfig)
 const app = express()
@@ -34,6 +37,14 @@ app.use(require('connect-history-api-fallback')())
 app.use(devMiddleware)
 app.use(hotMiddleware)
 
-app.listen(9901, function() {
-  console.log(9901 + '端口启用！')
+// 设置静态文件目录
+function setStatic() {
+  app.use('/assets', express.static(path.join(path.resolve(), 'src/assets')))
+  app.use('/libs', express.static(path.join(path.resolve(), 'src/assets/libs')))
+  app.use('/css', express.static(path.join(path.resolve(), 'src/assets/css')))
+}
+setStatic()
+
+app.listen(config.port, function() {
+  console.log('Listening at http://' + utils.getIpV4() + ':' + config.port + '\n')
 })

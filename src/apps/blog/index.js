@@ -2,11 +2,18 @@ import React from 'react'
 import { render } from 'react-dom'
 import './styles.less'
 import img1 from './img/1.png'
-import {Input} from 'antd'
+import {Input, Button, message} from 'antd'
 // import Test from '../component/test'
 import _ from 'lodash'
 
 class App extends React.Component {
+  constructor() {
+    super()
+  }
+
+  submit = () => {
+    message.error('扣扣扣扣')
+  }
 
   render() {
     if(module.hot){
@@ -18,6 +25,7 @@ class App extends React.Component {
       <p className="img-box">
         <img src={img1} alt=""/>
         <Input/>
+        <Button type="primary" onClick={this.submit}>确定</Button>
       </p>
     </div>
   }

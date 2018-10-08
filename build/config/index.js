@@ -6,6 +6,7 @@ const rootPath = path.join(__dirname, '/../../')
 
 
 module.exports = {
+  port: 9901,
   devPath,
   rootPath,
   views: require('../../src/view/view'),

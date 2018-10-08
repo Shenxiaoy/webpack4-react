@@ -122,7 +122,20 @@ splitChunks: {
 - priority：表示抽取权重，数字越大表示优先级越高。因为一个 module 可能会满足多个 cacheGroups 的条件，那么抽取到哪个就由权重最高的说了算；
 - reuseExistingChunk：表示是否使用已有的 chunk，如果为 true 则表示如果当前的 chunk 包含的模块已经被抽取出去了，那么将不会重新生成新的。
 
+#### webpack.ProvidePlugin
 
+> 定位全局变量
+
+```
+new webpack.ProvidePlugin({
+			$: "jquery",
+			jQuery: "jquery",
+			"window.jQuery": "jquery",
+			'React':'react',
+			'ReactDOM':'react-dom',
+			moment:'moment'
+		}),
+```
 
 
 

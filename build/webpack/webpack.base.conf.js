@@ -1,4 +1,5 @@
 const config = require('../config')
+const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const entries = require('./getEntrys')(config.views)
 const isDev = process.env.NODE_ENV === 'development'
@@ -6,7 +7,7 @@ const isDev = process.env.NODE_ENV === 'development'
 module.exports = {
   entry: entries,
   output: {
-    path: config.devPath + '/assets/',
+    path: config.devPath,
     filename: '[name].js',
     publicPath: '/',
   },
