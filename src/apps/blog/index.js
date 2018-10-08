@@ -12,7 +12,7 @@ class App extends React.Component {
   }
 
   submit = () => {
-    message.error('chat')
+    message.error('pure')
   }
 
   render() {
