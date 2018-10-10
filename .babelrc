@@ -2,7 +2,8 @@
   "presets": [ "@babel/react", "@babel/env"],
   "plugins": ["@babel/transform-runtime",
     "@babel/plugin-proposal-class-properties",
-    ["@babel/plugin-proposal-decorators", { "legacy": true }]
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    ["import", { "libraryName": "antd", "libraryDirectory": "lib"}, "ant"],
   ]
 
 }

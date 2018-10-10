@@ -8,3 +8,66 @@
   border: 1px solid mediumturquoise;
 }
 
+.chat-window {
+  width: 60%;
+  height: 70%;
+  min-height: 200px;
+  background: #F2F3F5;
+  border-radius: 2px;
+  border: 1px solid slategray;
+  position: absolute;
+  left: 20%;
+  top: 20%;
+  display: flex;
+}
+.chat-window .left-menu-room {
+  width: 200px;
+  padding: 5px;
+  border-right: 1px solid darkblue;
+}
+.chat-window .msg-content {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.chat-window .msg-content .msg-wrap {
+  position: absolute;
+  overflow: auto;
+  padding: 10px;
+  width: 100%;
+  top: 0;
+  bottom: 50px;
+}
+.chat-window .msg-content .msg-wrap .message-right {
+  text-align: right;
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+}
+.chat-window .msg-content .msg-wrap .message-right span {
+  background: #CCE4FC;
+  padding: 0 10px;
+  border-radius: 3px;
+}
+.chat-window .msg-content .msg-wrap .message-left {
+  text-align: right;
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  text-align: left;
+}
+.chat-window .msg-content .msg-wrap .message-left span {
+  background: #CCE4FC;
+  padding: 0 10px;
+  border-radius: 3px;
+}
+.chat-window .msg-content .msg-wrap .message-left span {
+  background: #DEE0E3;
+}
+.chat-window .msg-content .send-message {
+  width: 100%;
+  position: absolute;
+  bottom: 1px;
+  border-top: 1px solid #cccccc;
+}
+

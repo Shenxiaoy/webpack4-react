@@ -10,6 +10,9 @@ module.exports = {
   devPath,
   rootPath,
   views: require('../../src/view/view'),
+  alias: {
+    'utils': path.resolve(devPath, 'utils')
+  },
   dev: {
     assetsRoot: ''
   },

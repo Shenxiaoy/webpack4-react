@@ -13,7 +13,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
-    alias: {},
+    alias: config.alias,
   },
   plugins: [
     new MiniCssExtractPlugin({
