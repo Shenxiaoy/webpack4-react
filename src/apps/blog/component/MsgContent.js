@@ -10,18 +10,24 @@ export default class RoomList extends React.Component {
     super()
     this.state = {
       roomMsg: [],
-      roomName: 'root'
+      roomName: 'root',
+      sendValue: ''
     }
   }
 
-  handleSend() {
-    console.log(this.refs.inputMsg.value)
-    const value = this.refs.inputMsg.value
+  async handleSend() {
+    const {sendValue} = this.state
+    if(!sendValue) {
+      return
+    }
+
+
+    const value = sendValue
     const {roomName} = this.state
-    this.refs.inputMsg.value = ''
+
     socket.emit('sendMsg', {value, roomName: roomName, type: 'receive'})
     this.state.roomMsg.push({value, type: 'send'})
-    this.setState({roomMsg: this.state.roomMsg})
+    await this.setState({roomMsg: this.state.roomMsg, sendValue: ''})
     this.scrollBottom()
   }
 
@@ -55,6 +61,10 @@ export default class RoomList extends React.Component {
     })
   }
 
+  onChange = (e) => {
+   this.setState({sendValue: e.target.value})
+  }
+
   render() {
     console.log(this.state.roomMsg)
 
@@ -65,7 +75,12 @@ export default class RoomList extends React.Component {
         }
       </div>
       <div className="send-message">
-        <input ref="inputMsg" style={{width: '80%', marginRight: 10}}/>
+        <Input
+          ref="inputMsg"
+          style={{width: '80%', marginRight: 10}}
+          onChange={this.onChange}
+          value={this.state.sendValue}
+        />
         <Button type="primary" onClick={this.handleSend.bind(this)}>发送</Button>
       </div>
     </div>
