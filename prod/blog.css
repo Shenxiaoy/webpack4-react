@@ -70,4 +70,18 @@
   bottom: 1px;
   border-top: 1px solid #cccccc;
 }
+@media screen and (max-width: 500px) {
+  .left-menu-room {
+    display: none;
+  }
+  .msg-wrap {
+    height: 70%;
+  }
+  .chat-window {
+    width: 90%;
+    height: 90%;
+    left: 5%;
+    top: 10%;
+  }
+}
 

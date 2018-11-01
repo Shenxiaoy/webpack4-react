@@ -137,6 +137,11 @@ new webpack.ProvidePlugin({
 		}),
 ```
 
+## babel 转义 插件：
+
+- @babel/plugin-proposal-decorators 装饰器、箭头函数转义
+
+
 
 
 

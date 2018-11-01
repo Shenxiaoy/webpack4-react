@@ -3,7 +3,8 @@ import {Input, Icon, Button} from 'antd'
 import io from 'socket.io-client'
 import './styles.less'
 
-const socket = io('http://localhost:9991')
+const socket = io('139.199.98.207:9991')
+const {TextArea} = Input
 
 export default class RoomList extends React.Component {
   constructor() {
@@ -66,7 +67,6 @@ export default class RoomList extends React.Component {
   }
 
   render() {
-    console.log(this.state.roomMsg)
 
     return <div className="msg-content">
       <div ref="messageWrap" className="msg-wrap">
@@ -75,13 +75,23 @@ export default class RoomList extends React.Component {
         }
       </div>
       <div className="send-message">
-        <Input
+        {/*<Input*/}
+          {/*ref="inputMsg"*/}
+          {/*style={{width: '90%', marginRight: 10}}*/}
+          {/*onChange={this.onChange}*/}
+          {/*value={this.state.sendValue}*/}
+          {/*onPressEnter={this.handleSend.bind(this)}*/}
+        {/*/>*/}
+
+        <TextArea
           ref="inputMsg"
-          style={{width: '80%', marginRight: 10}}
+          style={{width: '90%', marginRight: 10}}
           onChange={this.onChange}
           value={this.state.sendValue}
+          onPressEnter={this.handleSend.bind(this)}
         />
-        <Button type="primary" onClick={this.handleSend.bind(this)}>发送</Button>
+
+        <Button size='small' type="primary" onClick={this.handleSend.bind(this)}>发送</Button>
       </div>
     </div>
   }

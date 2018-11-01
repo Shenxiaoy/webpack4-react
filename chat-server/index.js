@@ -1,8 +1,29 @@
 const koa = require('koa')
 const IO = require('koa-socket-2')
+const Router = require('koa-router')
 
 const app = new koa()
 const io = new IO()
+const router = new Router()
+
+/*
+* routes
+* */
+const chatRoutes = require('./routes/chat')
+
+router.get('/', (ctx, next) => {
+  ctx.redirect('/chat.html')
+})
+
+router.get('/test', (ctx, next) => {
+  ctx.response.body = 'test'
+
+})
+
+router.use('/chat', chatRoutes.routes(), chatRoutes.allowedMethods())
+
+app.use(router.routes())
+  .use(router.allowedMethods())
 
 io.attach(app)
 
