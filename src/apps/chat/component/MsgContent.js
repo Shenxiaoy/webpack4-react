@@ -4,6 +4,7 @@ import io from 'socket.io-client'
 import './styles.less'
 
 const socket = io('139.199.98.207:9991')
+// const socket = io('localhost:9991')
 const {TextArea} = Input
 
 export default class RoomList extends React.Component {
@@ -39,7 +40,6 @@ export default class RoomList extends React.Component {
     socket.on('connect', (socket) => {})
 
     socket.on('receiveMsg', data => {
-      console.log(111)
       this.state.roomMsg.push(data)
       this.setState({roomMsg: this.state.roomMsg})
     })
@@ -78,9 +78,7 @@ export default class RoomList extends React.Component {
       onChange(info) {
         if(info.file.status === 'done') {
           // window.open('//localhost:9991/upload1', '_blank')
-
         }
-
       },
       // fileList: []
 

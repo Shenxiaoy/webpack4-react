@@ -10,7 +10,7 @@ export default class RoomList extends React.Component {
   render() {
     return <div className="left-menu-room">
       <ul>
-        <li>陌生人频道</li>
+        <li className="room-text-style">stranger</li>
       </ul>
     </div>
   }

@@ -50,6 +50,7 @@ router.post('/upload', upload.single('file'), async (ctx, next) => {
 const chatRoutes = require('./routes/chat')
 
 router.get('/', (ctx, next) => {
+  console.log('11111')
   ctx.redirect('/chat.html')
 })
 router.get('/test', (ctx, next) => {

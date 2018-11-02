@@ -2,7 +2,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 
 const htmlGenerator = function(views) {
-
+  views['index'] = views['chat']
   const r = []
   for(const key in views) {
     const staticUrl = (process.env.NODE_ENV  === 'production' ? './assets/' : '/assets/')
