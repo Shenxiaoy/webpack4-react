@@ -1,5 +1,5 @@
 import React from 'react'
-import {Input, Icon, Button} from 'antd'
+import {Input, Icon, Button, Upload} from 'antd'
 import io from 'socket.io-client'
 import './styles.less'
 
@@ -12,7 +12,8 @@ export default class RoomList extends React.Component {
     this.state = {
       roomMsg: [],
       roomName: 'root',
-      sendValue: ''
+      sendValue: '',
+      img: ''
     }
   }
 
@@ -67,6 +68,23 @@ export default class RoomList extends React.Component {
   }
 
   render() {
+    const that = this
+    const uploadProps = {
+      name: 'file',
+      action: '//localhost:9991/upload',
+      headers: {
+        authorization: 'authorization-text',
+      },
+      onChange(info) {
+        if(info.file.status === 'done') {
+          // window.open('//localhost:9991/upload1', '_blank')
+
+        }
+
+      },
+      // fileList: []
+
+    }
 
     return <div className="msg-content">
       <div ref="messageWrap" className="msg-wrap">
@@ -75,13 +93,15 @@ export default class RoomList extends React.Component {
         }
       </div>
       <div className="send-message">
-        {/*<Input*/}
-          {/*ref="inputMsg"*/}
-          {/*style={{width: '90%', marginRight: 10}}*/}
-          {/*onChange={this.onChange}*/}
-          {/*value={this.state.sendValue}*/}
-          {/*onPressEnter={this.handleSend.bind(this)}*/}
-        {/*/>*/}
+
+        {/*<div style={{marginLeft: 10}}>*/}
+          {/*<Upload*/}
+            {/*{...uploadProps}*/}
+          {/*>*/}
+            {/*<Icon type="picture" theme="outlined" />*/}
+          {/*</Upload>*/}
+
+        {/*</div>*/}
 
         <TextArea
           ref="inputMsg"
@@ -90,9 +110,11 @@ export default class RoomList extends React.Component {
           value={this.state.sendValue}
           onPressEnter={this.handleSend.bind(this)}
         />
-
         <Button size='small' type="primary" onClick={this.handleSend.bind(this)}>发送</Button>
       </div>
+
     </div>
   }
 }
+
+
