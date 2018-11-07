@@ -87,7 +87,7 @@ import imgSrc from './img/1.png'
   };
 ```
 - chunks: all/表示所有依赖的 node_modules都会被打包到 vendors.js 中; initial; async;
-- automaticNameDelimiter: 表示生成的分离js名称分隔符 如 vendor~user.js
+- automaticNameDelimiter: 表示生成的分离js名称分隔符 如 vendor~blog.js
 - minSize: 表示抽取出来的文件在压缩前最小值限制，默认为30000字节
 - maxSize: 表示抽取出来的文件在压缩前最大值限制，默认为 0，表示不限制最大大小；
 - maxAsyncRequests: 最大的按需(异步)加载次数，默认为 5

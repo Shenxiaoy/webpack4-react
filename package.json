@@ -59,6 +59,7 @@
     "koa-multer": "^1.0.2",
     "koa-router": "^7.4.0",
     "koa-send": "^5.0.0",
+    "koa-session": "^5.10.0",
     "koa-socket-2": "^1.0.17",
     "koa-static": "^5.0.0",
     "lodash": "^4.17.11",

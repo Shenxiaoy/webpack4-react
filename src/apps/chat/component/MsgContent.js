@@ -1,10 +1,9 @@
 import React from 'react'
 import {Input, Icon, Button, Upload} from 'antd'
-import io from 'socket.io-client'
+import API from 'apis'
 import './styles.less'
 
-const socket = io('139.199.98.207:9991')
-// const socket = io('localhost:9991')
+const socket = API.socket
 const {TextArea} = Input
 
 export default class RoomList extends React.Component {
@@ -24,7 +23,6 @@ export default class RoomList extends React.Component {
       return
     }
 
-
     const value = sendValue
     const {roomName} = this.state
 
@@ -37,11 +35,10 @@ export default class RoomList extends React.Component {
   componentDidMount() {
     this.scrollBottom()
 
-    socket.on('connect', (socket) => {})
-
     socket.on('receiveMsg', data => {
       this.state.roomMsg.push(data)
       this.setState({roomMsg: this.state.roomMsg})
+      this.scrollBottom()
     })
 
     socket.emit('joinRoom', {roomName: this.state.roomName})
@@ -54,13 +51,25 @@ export default class RoomList extends React.Component {
   messageRender(ary) {
     return ary.map(item => {
       if(item.type === 'receive') {
-        return <span key={item.value} className="message-left"><span>{item.value}</span></span>
+        return <div key={item.value} className="message-left">
+
+          <span>{item.value}</span>
+        </div>
       } else if(item.type === 'send') {
-        return <span key={item.value} className="message-right"><span>{item.value}</span></span>
+        return <div key={item.value} className="message-right">
+          <p style={{fontSize: 10, color: '#DEB887'}}>{this.props.curUser}</p>
+          <span>{item.value}</span>
+        </div>
       } else {
-        return <span key={item.value} className="message-right"><span>这是推送：{item.value}</span></span>
+        return <div key={item.value} className="message-right"><span>这是推送：{item.value}</span></div>
       }
     })
+  }
+
+  messageStyle() {
+    const row = <div key={item.value} className="message-left">
+
+    </div>
   }
 
   onChange = (e) => {
@@ -85,6 +94,7 @@ export default class RoomList extends React.Component {
     }
 
     return <div className="msg-content">
+      <div className="top-line-message">用户：{this.props.curUser}，在线：{this.props.mans}</div>
       <div ref="messageWrap" className="msg-wrap">
         {
           this.messageRender(this.state.roomMsg)
@@ -103,12 +113,14 @@ export default class RoomList extends React.Component {
 
         <TextArea
           ref="inputMsg"
-          style={{width: '90%', marginRight: 10}}
+          style={{width: '100%', marginRight: 10}}
           onChange={this.onChange}
           value={this.state.sendValue}
           onPressEnter={this.handleSend.bind(this)}
         />
-        <Button size='small' type="primary" onClick={this.handleSend.bind(this)}>发送</Button>
+        <div className='btn-send'>
+          <Button size='small' type="danger" onClick={this.handleSend.bind(this)}>发送</Button>
+        </div>
       </div>
 
     </div>

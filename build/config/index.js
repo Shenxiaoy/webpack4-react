@@ -11,7 +11,8 @@ module.exports = {
   rootPath,
   views: require('../../src/view/view'),
   alias: {
-    'utils': path.resolve(devPath, 'utils')
+    'utils': path.resolve(devPath, 'utils'),
+    'apis': path.resolve(devPath, 'apis'),
   },
   dev: {
     assetsRoot: ''

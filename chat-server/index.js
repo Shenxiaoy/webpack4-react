@@ -7,13 +7,19 @@ const koaCors = require('koa-cors')
 const multer = require('koa-multer')
 const serve = require('koa-static')
 const send = require('koa-send')
+const session = require('koa-session')
+const sessionConfig = require('./config/basic_session')
 
 const app = new koa()
 const io = new IO()
 const router = new Router()
+var onlineNum = []
 
+app.use(session(sessionConfig, app))
 app.use(koaCors())
 app.use(serve(__dirname + '/static'))
+
+io.attach(app)
 
 
 /*
@@ -34,28 +40,20 @@ let fileFilter = (ctx, file ,cb)=>{
   }
 }
 let upload = multer({ storage: storage, fileFilter: fileFilter })
-
 router.post('/upload', upload.single('file'), async (ctx, next) => {
   ctx.body = {
     status: 1,
     body: {url: '一一一一一'}
   }
-
 })
-
 
 /*
 * routes
 * */
 const chatRoutes = require('./routes/chat')
 
-router.get('/', (ctx, next) => {
-  console.log('11111')
-  ctx.redirect('/chat.html')
-})
 router.get('/test', (ctx, next) => {
-  ctx.response.body = 'test'
-  return ctx.body = '1111111111111111'
+  ctx.body = 'session'
 })
 
 router.use('/chat', chatRoutes.routes(), chatRoutes.allowedMethods())
@@ -63,10 +61,13 @@ router.use('/chat', chatRoutes.routes(), chatRoutes.allowedMethods())
 app.use(router.routes())
   .use(router.allowedMethods())
 
-io.attach(app)
-
+/*
+* io.on  app.io.on   app._io.on  作用相似
+*
+* */
 io.on('connection',(ctx) => {
-  const {socket} = ctx
+
+  const { socket } = ctx
   socket.on('message', data => {
     socket.broadcast.emit('message', data)
 
@@ -80,15 +81,35 @@ io.on('connection',(ctx) => {
     socket.leave(data.roomName)
   })
 
-  socket.on('sendMsg', (data, fn) => {
+  socket.on('sendMsg', data => {
 
     socket.broadcast.to(data.roomName).emit('receiveMsg', data)
   })
 
+  socket.on('onlineUsers', data => {
+    if(!onlineNum.includes(data.interimName)) {
+      onlineNum.push(data.interimName)
+    }
+    console.log(onlineNum, 'online')
+    socket.broadcast.emit('onlineHeight', {mans: onlineNum.length})
+    socket.emit('onlineHeight', {mans: onlineNum.length})
+  })
+
+  socket.on('leaveChat', data => {
+    console.log(onlineNum)
+    const id = data.id
+
+    if(onlineNum.indexOf(id) !== -1) {
+      const index = onlineNum.indexOf(id)
+      onlineNum.splice(index, 1)
+      socket.broadcast.emit('onlineHeight', {mans: onlineNum.length})
+      socket.emit('onlineHeight', {mans: onlineNum.length})
+    }
+
+  })
+
 })
 
-app._io.emit('ss', {})
-
 app.listen(9991, () => {
-  console.log('监听' + 9991)
+  console.log('监听： 9991 端口')
 })
