@@ -1,5 +1,5 @@
 import React from 'react'
-import {InputNumber, Modal, Input, Select, Icon, Affix} from 'antd'
+import {InputNumber} from 'antd'
 
 
 export default class Test extends React.Component {

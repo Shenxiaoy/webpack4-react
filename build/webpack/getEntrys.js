@@ -5,7 +5,6 @@ function getEntry(views) {
 
   for(var key in views) {
     newObj[key] = [`${config.devPath}/apps/${key}/index.js`]
-    newObj['index'] = [`${config.devPath}/apps/chat/index.js`]
   }
   return newObj
 }

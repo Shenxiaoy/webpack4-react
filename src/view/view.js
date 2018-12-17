@@ -4,9 +4,10 @@ module.exports = {
     key: 'user',
     title: '用户中心'
   },
-  chat: {
-    key: 'chat',
-    title: '土超'
+  demoTest: {
+    key: 'demoTest',
+    title: '测试demo'
   },
+
 
 }
