@@ -141,6 +141,38 @@ new webpack.ProvidePlugin({
 
 - @babel/plugin-proposal-decorators 装饰器、箭头函数转义
 
+------------------------
+---------------------------------
+
+## 代码拆分 路由按需加载
+
+对于路由动态导入，用到 @babel/plugin-syntax-dynamic-import 和 react-loadable 这两个包。
+- @babel/plugin-syntax-dynamic-import  提供对import() 的支持；
+- react-loadable 是一个支持动态导入组件的高阶组件
+
+```
+{
+  "presets": ["@babel/react"],
+  "plugins": ["@babel/plugin-syntax-dynamic-import"]
+}
+
+
+import Loading from "./Loading";
+
+const LoadableComponent = Loadable({
+  loader: () => import("./Dashboard"),
+  loading: Loading
+});
+
+export default class LoadableDashboard extends React.Component {
+  render() {
+    return <LoadableComponent />;
+  }
+}
+```
+
+
+
 
 
 
