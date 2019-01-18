@@ -1,5 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
+import Routes from './routes'
+import Layout from './components/Layout'
 import './styles.less'
 
 class App extends React.Component {
@@ -13,9 +15,9 @@ class App extends React.Component {
   }
 
   render() {
-    return <div>
-     666666
-    </div>
+    return <Layout>
+      <Routes></Routes>
+    </Layout>
   }
 }
 
