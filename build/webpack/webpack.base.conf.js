@@ -79,19 +79,20 @@ module.exports = {
   optimization: {
     splitChunks: {
       cacheGroups: {
-        common: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'common',
-          chunks: 'initial',
-          priority: 2,
-          minChunks: 2,
+        vendors: {
+          test: /[\\/]node_modules[\\/][(react)|(antd)|(lodash)|(react\\-router)]/,  // 特殊字符转义用 \\进行转义
+          name: 'vendors',  //  name如果不写，表示采用 automaticNameDelimiter 默认生成块的名称(common~user[hash].js),适合单页配置，会引入所有chunks；如果写了chunk名称，需要与htmlWebpcakPlugin配合使用，生成一个chunk，多用于多页面配置；
+          chunks: 'initial',  //  1.all:表示node_modules引入的模块；
+          priority: 2,  //  模块可以属于多个缓存组，提高缓存组的优先级，默认组优先级为负
+          minChunks: 1,  //  共分割前必须共享模块的最小块数
         },
-        // vendor: {
-        //   name: 'vendor',
+        // common: {
+        //   name: 'common',
         //   chunks: 'initial',
         //   priority: 10,
         //   test: /[\\/]node_modules[\\/][(react)|(antd)|(lodash)]/
         // },
+
         // 主要用于抽取出一个css文件
         // styles: {
         //   name: 'styles',
