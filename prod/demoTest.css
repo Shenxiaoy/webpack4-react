@@ -36,16 +36,20 @@ div {
 }
 .sider-left {
   background: #fff;
-  width: 200px;
+  max-width: 200px;
   overflow: hidden;
 }
 .menu-fixed-add {
   position: fixed;
   left: 0;
   top: 0;
+  max-width: 200px;
 }
 .ant-layout-sider-trigger {
   background: #c8d5e2;
+}
+.layout-content {
+  overflow: hidden;
 }
 
 .blog-style {

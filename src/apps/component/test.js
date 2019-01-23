@@ -1,14 +1,3 @@
-import React from 'react'
-import {InputNumber} from 'antd'
-
-
-export default class Test extends React.Component {
-
-  render() {
-
-    return <InputNumber />
-  }
-}
-
-
-
+var a = '<p>我相信我可以的</p><p><span style="font-size: 20rem;">我师傅师傅说</span></p><p><span style="font-size: 20px;">我<span style="font-size: 36px;">的发的发大水了</span></span></p><p><span style="font-size: 18px;">1</span></p><p><span style="font-size: 18px;"><img src="https://aixuexi-test.oss-cn-beijing.aliyuncs.com/B:3009:K/1548000000/827da801ed4c43578aa9699084368e8c.png" width="105" height="39" style="width: 105px; height: 39px;"/></span></p><p><span style="font-size: 18px;"><br/></span></p><p><span style="font-size: 18px;"><img src="https://aixuexi-test.oss-cn-beijing.aliyuncs.com/B:3009:K/1548000000/dc9f34d6496a435cbfbfdc4c739060b4.png" width="735" height="196" style="width: 735px; height: 196px;"/></span></p><p><span style="font-size: 18px;"><br/></span></p><p><span style="font-size: 18px;"><br/></span></p><p><span style="font-size: 18px;"><br/></span></p><p><span style="font-size: 18px;"><br/></span></p>'.toString()
+var b = a.replace(/px/g, 'rem')
+console.log(b)

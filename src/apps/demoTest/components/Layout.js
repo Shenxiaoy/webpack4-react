@@ -15,16 +15,7 @@ export default class DemoLayout extends Component {
   }
 
   componentDidMount() {
-   window.onscroll = function(e) {
-     const scrollTop =  document.documentElement.scrollTop || document.body.scrollTop
-     const menuObj = document.getElementById('menuFixed')
-     if(scrollTop > 55) {
-       menuObj.classList.add('menu-fixed-add')
-     } else {
-       menuObj.classList.remove('menu-fixed-add')
-     }
-
-   }
+   
   }
 
   onMenuChange = (data) => {
@@ -58,7 +49,7 @@ export default class DemoLayout extends Component {
           <Sider
             onMenuChange={this.onMenuChange}
           />
-          <Layout style={{marginLeft: 10}}>
+          <Layout className="layout-content" style={{marginLeft: 10, zIndex: 10}}>
             {this.showCrumb(crumbs)}
 
             <Content style={{margin: 5, background: '#fff', padding: 15}}>

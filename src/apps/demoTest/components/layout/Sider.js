@@ -13,14 +13,31 @@ export default class App extends Component {
       collapsed: false,
       crumb: []
     }
-
+  }
+  
+  // 给左侧菜单添加 固定定位的样式
+  addFixedStyle() {
+    const scrollTop =  document.documentElement.scrollTop || document.body.scrollTop
+    const menuObj = document.getElementById('menuFixed')
+    if(scrollTop > 55) {
+      menuObj.classList.add('menu-fixed-add')
+    } else {
+      menuObj.classList.remove('menu-fixed-add')
+    }
   }
 
   componentDidMount() {
+    const that = this
+    window.onscroll = function(e) {
+      that.addFixedStyle()
+    }
   }
 
-  onCollapse = (collapsed) => {
-    this.setState({ collapsed })
+  onCollapse = async (collapsed) => {
+    
+    //防异步处理，最后把样式类添加上去
+    await this.setState({collapsed})
+    this.addFixedStyle()
   }
 
   getMenuList(data, parent) {
@@ -50,7 +67,6 @@ export default class App extends Component {
 
     const leg = /\/(.*)\.html/
     const pathName = location.pathname.match(leg)[1] || ''
-    console.log(pathName)
     window.location = pathName + '.html#' + cur.link + '?'
 
   }

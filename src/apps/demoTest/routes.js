@@ -1,7 +1,8 @@
-import {HashRouter, Route} from 'react-router-dom'
+import {HashRouter, Route, Redirect} from 'react-router-dom'
 import React from 'react'
 import App from './components/Layout'
 import {Miracle} from './dynamicImport'
+import Unit from './unit'
 
 export default class Routes extends React.Component {
   constructor() {
@@ -14,6 +15,8 @@ export default class Routes extends React.Component {
         <div>
           <Route exact path="/" component={content} />
           <Route path="/miracle" component={Miracle} />
+          <Route path="/unit" component={Unit} />
+          
         </div>
       </HashRouter>
     </div>

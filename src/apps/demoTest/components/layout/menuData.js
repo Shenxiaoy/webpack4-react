@@ -40,6 +40,33 @@ const menuData = [
     remark: 'miracle',
     link: '/miracle',
     list: []
+  },
+  {
+    name: '组件测试',
+    code: 'unit',
+    remark: 'unit',
+    link: '/',
+    list: [
+      {
+        name: 'canvas',
+        code: 'canvas',
+        link: '/unit/canvas',
+        remark: 'canvas',
+      },
+      {
+        name: '富文本',
+        code: 'editor',
+        remark: 'editor',
+        link: '/unit/editor'
+      },
+      {
+        name: '拖拽',
+        code: 'dnd',
+        remark: 'dnd',
+        link: '/unit/dnd'
+      }
+
+    ]
   }
 ]
 
