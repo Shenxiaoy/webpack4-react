@@ -33,15 +33,32 @@ module.exports = {
         test: /\.css$/,
         use: [
           !isDev ? MiniCssExtractPlugin.loader : "style-loader",
-          "css-loader",
+          // "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              config: {
+                path: path.resolve(__dirname) + '/postcss.config.js'
+              }
+            }
+          },
         ]
       },
       {
         test: /\.less$/,
         use: [
           !isDev ? MiniCssExtractPlugin.loader : "style-loader",
-          "css-loader",
-          "less-loader"
+          // "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              config: {
+                path: path.resolve(__dirname) + '/postcss.config.js'
+              }
+            }
+          },
+          "less-loader",
+
         ],
         exclude: /node_modules/,
       },
