@@ -6,7 +6,6 @@
 //     'cssnano': {},
 //   }
 // }
-console.log('-------------===================')
 module.exports = {
   plugins: [
     require('autoprefixer')({
