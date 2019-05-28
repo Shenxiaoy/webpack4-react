@@ -52,6 +52,8 @@ import imgSrc from './img/1.png'
 
 在webpack4 最新打包配置中暂无发现解决这个问题的办法。
 
+-----------------------
+
 ## optimization splitChunkPlugin 多页面优化：代码分离，公共模块打包
 
 会把 node_modules依赖打包到公共js中去，也会把公共依赖的组件打包到公共js中。
