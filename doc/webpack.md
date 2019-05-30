@@ -138,12 +138,13 @@ new webpack.ProvidePlugin({
 			moment:'moment'
 		}),
 ```
+------------------------
 
 ## babel 转义 插件：
 
 - @babel/plugin-proposal-decorators 装饰器、箭头函数转义
 
-------------------------
+
 ---------------------------------
 
 ## 代码拆分 路由按需加载
