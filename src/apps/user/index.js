@@ -13,7 +13,17 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    API.auth.getTimeHistory({id: 33, name: 'eee', sku: [3,4,6]})
+    API.auth.getTimeHistory({id: 'scoped', name: 'eee', sku: [3,4,6]})
+    API.auth.list('3edrfff45@##')
+      var instance = axios.create({
+          timeout: 1000,
+          method: 'post',
+          headers: {'content-type': 'application/json;charset=UTF-8'},
+          url: '/user/333',
+          baseURL: '/todu',
+          data: '3333'
+      })
+      instance()
    
   }
 

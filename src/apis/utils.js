@@ -1,5 +1,5 @@
 /*
-* 在使用axios 库的时候，在传参为空、post data为array、string 下都出错，待以后更正
+*
 * */
 
 import axios from 'axios'
@@ -8,7 +8,7 @@ import axios from 'axios'
 * api url 转换
 * */
 function transformUrl(url, data, type) {
-  if(data && !Array.isArray(data) && Object.keys(data).length ) {
+  if(data && typeof data !== 'string' && !Array.isArray(data) && Object.keys(data).length ) {
     let newUrl = url
     const newData = Object.assign({}, data)
 
@@ -50,6 +50,8 @@ function sendRequest(url, baseUrl, method, requestConfig) {
   request.interceptors.request.use(function(config) {
     config.baseURL = '/' + transUrl + '/'
     config.method = method
+    config.responseType = 'json'
+    config.headers = {'content-type': 'application/json;charset=UTF-8'}
     config.transformRequest = [requestData.bind(null, method)]
 
     if(requestConfig) {
