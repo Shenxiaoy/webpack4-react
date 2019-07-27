@@ -4,7 +4,8 @@ const publicUrl  = baseUrl.diy
 
 
 export default {
-  getTimeHistory: r.post('zeus/train/{id}', publicUrl ),
-  list: r.post('zeus/list', publicUrl ),
+  getTimeHistory: r.get('zeus/train/{id}', publicUrl ),
+  list: r.post('batch/batchList', 'list' ),
+  detail: r.post('batch/detail', 'detail' ),
 
 }

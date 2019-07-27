@@ -13,17 +13,23 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    API.auth.getTimeHistory({id: 'scoped', name: 'eee', sku: [3,4,6]})
-    API.auth.list('3edrfff45@##')
-      var instance = axios.create({
-          timeout: 1000,
-          method: 'post',
-          headers: {'content-type': 'application/json;charset=UTF-8'},
-          url: '/user/333',
-          baseURL: '/todu',
-          data: '3333'
-      })
-      instance()
+    API.auth.getTimeHistory({id: 'scoped', name: 'eee'})
+    API.auth.list({id: 'scoped', name: 'eee', sku: [3,4,6]})
+
+    //   var instance = axios.create({
+    //       timeout: 1000,
+    //       method: 'post',
+    //       headers: {'content-type': 'application/json;charset=UTF-8'},
+    //       url: '/diy/list',
+    //       baseURL: 'http://localhost:3003',
+    //       data: {
+    //           dd: 'dd',
+    //           age: 33
+    //       }
+    //   })
+    //   instance().then(json=> {
+    //       console.log(json)
+    //   })
    
   }
 
